@@ -137,7 +137,7 @@ header nav a:hover, header nav .menu:hover{
 */
 .main .step{
     border-bottom:white solid 1px;
-    padding:0% 5% 5%;
+    padding:0% 10% 10%;
 }
 
 
@@ -401,12 +401,12 @@ Changes are made when the width of the page is more than 1000px
     .step .text{
         display:flex;
         flex-direction:column;
-        width:40%;
+        width:30%;
     }
 
     .step .notebook-container{
-        width:40%;
-        max-height:60vh;
+        width:50%;
+        max-height:50vh;
     }
 }
 
