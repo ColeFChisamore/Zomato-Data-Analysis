@@ -118,29 +118,7 @@ print(df.loc[0:4])</pre></div>
                   'rate': 'Rating',
                   'votes': 'Rating Count',
                   'approx_cost(for two people)': 'Approximate Two Person Cost',
-                  'listed_in(type)': 'Restaurant Type'}, inplace=True)
-print(df.loc[0:4])</pre></div>
-                <div class="output-area">
-                    <div class="output-wrapper">
-                        <div class="cell-prompt output-prompt"></div>
-                        <div class="output-content">
-                            <div class="output-stream">         Restaurant Name Online Availability Booking Availability Rating  \
-0                  Jalsa                 Yes                  Yes  4.1/5   
-1         Spice Elephant                 Yes                   No  4.1/5   
-2        San Churro Cafe                 Yes                   No  3.8/5   
-3  Addhuri Udupi Bhojana                  No                   No  3.7/5   
-4          Grand Village                  No                   No  3.8/5   
-
-   Rating Count  Approximate Two Person Cost Restaurant Type  
-0           775                          800          Buffet  
-1           787                          800          Buffet  
-2           918                          800          Buffet  
-3            88                          300          Buffet  
-4           166                          600          Buffet  
-</div>
-                        </div>
-                    </div>
-                </div>
+                  'listed_in(type)': 'Restaurant Type'}, inplace=True)</pre></div>
             </div>
         </div>
             </div>
@@ -178,10 +156,8 @@ df = df.drop(df[df['Rating Count'] == 0].index)</pre></div>
                 <div class="input-area"><pre>def frac2float(frac):
     """
     Converts a fraction object into a float
-
     Parameters:
         frac (object): a fraction, whose string looks like 'X/Y'
-
     Returns:
         float: the decimal value of the fraction
     """
@@ -228,7 +204,7 @@ Name: Rating, dtype: float64
             <div class="text">
             <div class="subname">Graph 1: Visualizing Restaurant Types and Order Availability</div>
             <div class="explain">
-                See
+                My first graph is a simple countplot to display the counts of two important factors: Restaurant Type and Online Availability. This visual displays the total number of each restuarant type in the dataframe, as well as how many of them that have online ordering availability. I can determine that in my dataset there are 7 buffets, 23 cafes, 77 dining restaurants, and 8 more restaurants that don't fit into the other categories. I can find that there are 58 restaurants that offer online ordering and 57 that don't, giving an almost 50/50 split. Furthermore I can see that dining restaurants are less likely to be available online than any other restaurant type. Perhaps this is because a certain type of restaurant within the "dining" category is less likely to offer online ordering.
                 <ul></ul>
             </div>
             </div>
@@ -272,9 +248,7 @@ plt.title("Count of Restaurants by Type and Online Availability")</pre></div>
                 <div class="cell cell-code">
             <div class="cell-prompt input-prompt">In [7]:</div>
             <div class="cell-content">
-                <div class="input-area"><pre>## Now let's look at average rating by restaurant type
-# first group the dataframe into a new one:
-votesByType = df.groupby('Restaurant Type')['Rating Count'].mean()
+                <div class="input-area"><pre>votesByType = df.groupby('Restaurant Type')['Rating Count'].mean()
 votesByType = pd.DataFrame({'Rating Count': votesByType})
 # then plot it
 ax = sns.barplot(votesByType, x='Restaurant Type', y='Rating Count', hue='Restaurant Type', 
@@ -306,7 +280,10 @@ plt.title("Average Number of Votes by Restaurant Type")</pre></div>
             <div class="text">
             <div class="subname">Graph 3: Rating vs Rating Count</div>
             <div class="explain">
-                See
+                This graph is a scatterplot displaying the relation between Rating and Rating count in order to determine any possible correlation between the two. It also includes coloring for the top and bottom 10% of restaurants by Approximate Two Person Cost. I took the logarithm of Rating Count in order to make the graph more readable since this factor was very skewed towards higher counts. 
+            </div>
+            <div class="explain">
+                First off I see that most ratings lie within the range of 3.5 to 4, and most log counts lie from 3 to 6 (20 to 400 actual count). The relation between rating count and rating doesn't seem to be entirely linear, but rather positively quadratic. There isn't enough data to say for sure, but it seems that restaurants with much higher or much lower ratings tend to have a higher count of ratings than restaurants with average ratings. This would make sense since a particularly good or bad experience with a restaurant could make a customer more likely to leave a review than an average experience would. Looking at the extremes of the Approximate Two Person Cost I don't seem to notice any particular relation with Rating, however there may be some vague positive correlation with rating count. Generally, it seems that cost doesn't have a very meaningful effect on either of these factors.
                 <ul></ul>
             </div>
             </div>
