@@ -82,7 +82,7 @@ header nav ul{
 header nav ul li{
     display:inline-block;
     background-color: var(--color1);
-    width:31%;
+    width: 22.8%;
     margin:1%;
 }
 /* Navigation Bar Links
@@ -331,7 +331,7 @@ header nav a:hover, header nav .menu:hover{
 
 
 .footer{
-    height:200px;
+    height:130px;
     background-color: var(--color2);
     text-align:center;
 }
@@ -363,7 +363,7 @@ header nav a:hover, header nav .menu:hover{
 }
 
 /* 
-Changes are made when the width of the page is less than 740px 
+Changes are made when the width of the page is less than 1200px 
 */
 @media all and (max-width:1200px){
     /* Navigation list items change orientation and center*/
@@ -387,7 +387,7 @@ Changes are made when the width of the page is less than 740px
 
 
 /* 
-Changes are made when the width of the page is more than 1000px 
+Changes are made when the width of the page is more than 1200px 
 */
 @media all and (min-width:1200px){
 
